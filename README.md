@@ -14,6 +14,7 @@ ln -s ~/dotfiles/bashrc ~/.bashrc
 
 It's recommended to store the files without the leading dot in the repo for better visibility.
 
+# How to use
 ## Quick Setup
 Instead of running all the commands, you can use `setup.sh` for easy setup!
 ```bash
@@ -22,8 +23,8 @@ cd ~/dotfiles
 ./setup.sh
 ```
 
-# How to use
-When setting up the configs on a new computer use the following:
+## Manual Setup
+When setting up the configs manually:
 
 ```bash
 git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
