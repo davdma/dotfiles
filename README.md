@@ -1,5 +1,5 @@
 # dotfiles
-For storing my workflow config files. Add more as needed!
+For storing my workflow config files so that it can follow me anywhere. Add more as needed!
 
 Copy config file to dotfiles repo:
 ```bash
@@ -11,6 +11,8 @@ ln -s ~/dotfiles/vimrc ~/.vimrc
 mv ~/.bashrc ~/dotfiles/bashrc
 ln -s ~/dotfiles/bashrc ~/.bashrc
 ```
+
+It's recommended to store the files without the leading dot in the repo for better visibility. Instead of running all the commands, you can use `setup.sh` for easy setup!
 
 # How to use
 When setting up the configs on a new computer use the following:
