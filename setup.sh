@@ -83,30 +83,6 @@ create_symlink "$DOTFILES_DIR/vimrc" "$HOME/.vimrc" "Vim"
 # Setup tmux configuration
 create_symlink "$DOTFILES_DIR/tmux.conf" "$HOME/.tmux.conf" "Tmux"
 
-# Check for additional common configs and offer to set them up
-print_status "Checking for additional configurations..."
-
-# Neovim config (shares vim config initially)
-if [ -f "$DOTFILES_DIR/vimrc" ]; then
-    mkdir -p "$HOME/.config/nvim"
-    create_symlink "$DOTFILES_DIR/vimrc" "$HOME/.config/nvim/init.vim" "Neovim"
-fi
-
-# Git config
-if [ -f "$DOTFILES_DIR/gitconfig" ]; then
-    create_symlink "$DOTFILES_DIR/gitconfig" "$HOME/.gitconfig" "Git"
-fi
-
-# Bash config
-if [ -f "$DOTFILES_DIR/bashrc" ]; then
-    create_symlink "$DOTFILES_DIR/bashrc" "$HOME/.bashrc" "Bash"
-fi
-
-# Zsh config
-if [ -f "$DOTFILES_DIR/zshrc" ]; then
-    create_symlink "$DOTFILES_DIR/zshrc" "$HOME/.zshrc" "Zsh"
-fi
-
 # Check if vim supports clipboard
 print_status "Checking vim clipboard support..."
 if command -v vim >/dev/null 2>&1; then
