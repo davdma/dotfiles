@@ -21,6 +21,8 @@ Must make sure `tpm` is installed first before using `.tmux.conf`! Make sure you
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
+And then do **prefix + I** where I is **shift+I** since it is capitalized. I always get confused with this and don't understand why the plugins are no fetched...
+
 ## Quick Setup
 Instead of running all the commands, you can use `setup.sh` for easy setup!
 ```bash
