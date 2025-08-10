@@ -86,6 +86,12 @@ create_symlink "$DOTFILES_DIR/tmux.conf" "$HOME/.tmux.conf" "Tmux"
 # Check for additional common configs and offer to set them up
 print_status "Checking for additional configurations..."
 
+# Neovim config (shares vim config initially)
+if [ -f "$DOTFILES_DIR/vimrc" ]; then
+    mkdir -p "$HOME/.config/nvim"
+    create_symlink "$DOTFILES_DIR/vimrc" "$HOME/.config/nvim/init.vim" "Neovim"
+fi
+
 # Git config
 if [ -f "$DOTFILES_DIR/gitconfig" ]; then
     create_symlink "$DOTFILES_DIR/gitconfig" "$HOME/.gitconfig" "Git"
