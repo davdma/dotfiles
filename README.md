@@ -15,6 +15,12 @@ ln -s ~/dotfiles/bashrc ~/.bashrc
 It's recommended to store the files without the leading dot in the repo for better visibility.
 
 # How to use
+## Pre-requisite
+Must make sure `tpm` is installed first before using `.tmux.conf`! Make sure you run:
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
 ## Quick Setup
 Instead of running all the commands, you can use `setup.sh` for easy setup!
 ```bash
