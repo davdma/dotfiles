@@ -1,10 +1,13 @@
 # Minimal starship configuration
 # Shows only directory + git:(branch) for git repositories
-format = "$directory$git_branch $character"
+format = "$directory$git_branch$python$character"
 
 [directory]
 style = "cyan"
 
 # show git branch with branch in purple
 [git_branch]
-format = "git:([$branch](bold red))"
+format = "git:([$branch](bold red)) "
+
+[python]
+format = '[(\($virtualenv\) )]($style)'
