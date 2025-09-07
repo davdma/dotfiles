@@ -14,6 +14,8 @@ ln -s ~/dotfiles/bashrc ~/.bashrc
 
 It's recommended to store the files without the leading dot in the repo for better visibility.
 
+My inspo for the `bashrc` config is from [this](https://gitlab.com/dwt1/dotfiles/-/blob/master/.bashrc?ref_type=heads) repo.
+
 # How to use
 ## Pre-requisite
 Must make sure `tpm` is installed first before using `.tmux.conf`! Make sure you run:

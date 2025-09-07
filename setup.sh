@@ -83,6 +83,9 @@ create_symlink "$DOTFILES_DIR/vimrc" "$HOME/.vimrc" "Vim"
 # Setup tmux configuration
 create_symlink "$DOTFILES_DIR/tmux.conf" "$HOME/.tmux.conf" "Tmux"
 
+# Setup bash configuration
+create_symlink "$DOTFILES_DIR/bashrc" "$HOME/.bashrc" "Bash"
+
 # Check if vim supports clipboard
 print_status "Checking vim clipboard support..."
 if command -v vim >/dev/null 2>&1; then
@@ -109,6 +112,7 @@ print_success "Dotfiles setup complete!"
 print_status "Configurations have been linked:"
 echo "  ~/.vimrc -> $DOTFILES_DIR/vimrc"
 echo "  ~/.tmux.conf -> $DOTFILES_DIR/tmux.conf"
+echo "  ~/.bashrc -> $DOTFILES_DIR/bashrc"
 
 if [ "$(ls -A "$BACKUP_DIR" 2>/dev/null)" ]; then
     print_status "Original configs backed up to: $BACKUP_DIR"
@@ -119,3 +123,4 @@ fi
 
 print_status "To apply tmux changes to existing sessions, run: tmux source-file ~/.tmux.conf"
 print_status "Vim changes will take effect when you restart vim or run: :source ~/.vimrc"
+print_status "To apply bash changes, run: source ~/.bashrc or start a new terminal session"
