@@ -86,6 +86,10 @@ create_symlink "$DOTFILES_DIR/tmux.conf" "$HOME/.tmux.conf" "Tmux"
 # Setup bash configuration
 create_symlink "$DOTFILES_DIR/bashrc" "$HOME/.bashrc" "Bash"
 
+# Setup starship configuration
+mkdir -p "$HOME/.config"
+create_symlink "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml" "Starship"
+
 # Check if vim supports clipboard
 print_status "Checking vim clipboard support..."
 if command -v vim >/dev/null 2>&1; then
@@ -147,6 +151,28 @@ else
     fi
 fi
 
+# Install starship
+print_status "Installing starship..."
+if command -v starship >/dev/null 2>&1; then
+    print_success "Starship is already installed (version: $(starship --version | cut -d' ' -f2))"
+else
+    if command -v curl >/dev/null 2>&1; then
+        # Install starship using the official installer
+        curl -sS https://starship.rs/install.sh | sh -s -- -y
+        print_success "Starship installed via official installer"
+    elif command -v apt >/dev/null 2>&1; then
+        # Fallback to package manager if curl fails
+        sudo apt update && sudo apt install -y starship
+        print_success "Starship installed via apt"
+    elif command -v brew >/dev/null 2>&1; then
+        brew install starship
+        print_success "Starship installed via brew"
+    else
+        print_error "Package manager not found. Please install starship manually"
+        exit 1
+    fi
+fi
+
 # Install neovim and dependencies
 print_status "Installing neovim and dependencies..."
 if command -v nvim >/dev/null 2>&1; then
@@ -181,6 +207,7 @@ print_status "Configurations have been linked:"
 echo "  ~/.vimrc -> $DOTFILES_DIR/vimrc"
 echo "  ~/.tmux.conf -> $DOTFILES_DIR/tmux.conf"
 echo "  ~/.bashrc -> $DOTFILES_DIR/bashrc"
+echo "  ~/.config/starship.toml -> $DOTFILES_DIR/starship.toml"
 
 if [ "$(ls -A "$BACKUP_DIR" 2>/dev/null)" ]; then
     print_status "Original configs backed up to: $BACKUP_DIR"
