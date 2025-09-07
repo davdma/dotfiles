@@ -2,7 +2,7 @@
 For storing my workflow config files so that it can follow me anywhere. Add more as needed!
 
 The current configs for my workflow:
-* `starship.toml` for the command line prompt formatting
+* `starship.toml` for the `starship` command line prompt formatting package
 * `bashrc` for shell config
 * `vimrc` for vim config
 * `tmux.conf` for tmux config
