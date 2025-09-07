@@ -1,5 +1,7 @@
 # dotfiles
-For storing my workflow config files so that it can follow me anywhere. Add more as needed! The editor config here is only for `vim` - for Neovim setup on a new computer, consult my `kickstart.nvim` repo [here](https://github.com/davdma/kickstart.nvim).
+For storing my workflow config files so that it can follow me anywhere. Add more as needed! 
+
+The editor config here is only for `vim` (though it installs `nvim` and those configs for you in `setup.sh` by cloning my kickstart repo). For more info on the Neovim setup consult the `kickstart.nvim` repo [here](https://github.com/davdma/kickstart.nvim).
 
 # Adding to the repo
 
