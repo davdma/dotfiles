@@ -1,7 +1,9 @@
 # dotfiles
-For storing my workflow config files so that it can follow me anywhere. Add more as needed!
+For storing my workflow config files so that it can follow me anywhere. Add more as needed! The editor config here is only for `vim` - for Neovim setup on a new computer, consult my `kickstart.nvim` repo [here](https://github.com/davdma/kickstart.nvim).
 
-Copy config file to dotfiles repo:
+# Adding to the repo
+
+To add any existing config files to the dotfiles repo, use the following:
 ```bash
 mv ~/.vimrc ~/dotfiles/vimrc
 # Create a symlink so vim still finds it
@@ -18,27 +20,40 @@ My inspo for the `bashrc` config is from [this](https://gitlab.com/dwt1/dotfiles
 
 # How to use
 ## Pre-requisite
-Must make sure `tpm` is installed first before using `.tmux.conf`! Make sure you run:
+Must make sure `tpm` is installed first before using `.tmux.conf`! The `setup.sh` handles this for you. If that does not work you will have to run:
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
-And then do **prefix + I** where **I** is the key stroke **shift+I** since it is capitalized. I always get confused with this and don't understand why the plugins are not fetched...
+To enable the plugins post `tpm` install, you must manually then do **prefix + I** in a `tmux` session where **I** is the key stroke **shift+I** since it is capitalized. I always get confused with this and don't understand why the plugins are not fetched...
 
 ## Quick Setup
-Instead of running all the commands, you can use `setup.sh` for easy setup!
+Instead of running all the commands, you can use `setup.sh` for easy setup! The setup script installs `tpm`, `fzf`, and `starship` and activates the config files for you.
+
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+git clone https://github.com/davdma/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./setup.sh
 ```
+
+Afterwards you will have to activate the plugins for `tmux` with prefix + I and for neovim by starting it up with `nvim`.
 
 ## Manual Setup
 When setting up the configs manually:
 
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+git clone https://github.com/davdma/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ln -s ~/dotfiles/vimrc ~/.vimrc
 # etc for other configs
+```
+
+You will also have to manually install the required packages:
+
+```bash
+# install starship on linux
+curl -sS https://starship.rs/install.sh | sh
+
+# install fzf
+brew install fzf
 ```
