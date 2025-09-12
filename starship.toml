@@ -14,3 +14,4 @@ format = '[(\($virtualenv\) )]($style)'
 
 [conda]
 format = '[(\($environment\) )]($style)'
+ignore_base = false
