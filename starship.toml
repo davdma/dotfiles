@@ -1,6 +1,6 @@
 # Minimal starship configuration
 # Shows only directory + git:(branch) for git repositories
-format = "$directory$git_branch$python$character"
+format = "$directory$git_branch$python$conda$character"
 
 [directory]
 style = "cyan"
@@ -11,3 +11,6 @@ format = "git:([$branch](bold red)) "
 
 [python]
 format = '[(\($virtualenv\) )]($style)'
+
+[conda]
+format = '[(\($environment\) )]($style)'
