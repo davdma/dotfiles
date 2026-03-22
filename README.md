@@ -3,7 +3,8 @@ For storing my workflow config files so that it can follow me anywhere. Add more
 
 The current configs for my workflow:
 * `starship.toml` for the `starship` command line prompt formatting package
-* `bashrc` for shell config
+* `bashrc` for bash config (Linux)
+* `zshrc` for zsh config (macOS)
 * `vimrc` for vim config
 * `tmux.conf` for tmux config
 * Neovim separately configured via `kickstart.nvim`
@@ -39,7 +40,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 Note: to enable the plugins post `tpm` install, you must manually then do **prefix + I** in a `tmux` session where **I** is the key stroke **shift+I** since it is capitalized. I always get confused with this and don't understand why the plugins are not fetched...
 
 ## Quick Setup
-Instead of running all the commands, you can use `setup.sh` for easy setup! The setup script installs `tpm`, `fzf`, and `starship` and activates the config files for you.
+`setup.sh` installs all dependencies (`tpm`, `fzf`, `starship`, `neovim`) and symlinks the configs.
 
 ```bash
 git clone https://github.com/davdma/dotfiles.git ~/dotfiles
@@ -47,24 +48,24 @@ cd ~/dotfiles
 ./setup.sh
 ```
 
-Afterwards you will have to activate the plugins for `tmux` with prefix + I and for neovim by starting it up with `nvim`.
+Both `~/.bashrc` (bash) and `~/.zshrc` (zsh) are linked — any existing file is backed up first, not overwritten.
+
+Afterwards activate plugins for `tmux` with prefix + I and for neovim by starting `nvim`.
 
 ## Manual Setup
-When setting up the configs manually:
 
 ```bash
 git clone https://github.com/davdma/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ln -s ~/dotfiles/vimrc ~/.vimrc
-# etc for other configs
+ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
+
+# bash (Linux)
+ln -s ~/dotfiles/bashrc ~/.bashrc
+
+# zsh (macOS)
+ln -s ~/dotfiles/zshrc ~/.zshrc
 ```
 
-You will also have to manually install the required packages:
-
-```bash
-# install starship on linux
-curl -sS https://starship.rs/install.sh | sh
-
-# install fzf
-brew install fzf
-```
+You will also need to install dependencies manually (`tpm`, `fzf`, `starship`, `neovim`).

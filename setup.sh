@@ -5,6 +5,11 @@
 
 set -e  # Exit on any error
 
+# Bootstrap Homebrew PATH for Apple Silicon before any brew checks
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 DOTFILES_DIR="$HOME/dotfiles"
 BACKUP_DIR="$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
 
@@ -85,6 +90,9 @@ create_symlink "$DOTFILES_DIR/tmux.conf" "$HOME/.tmux.conf" "Tmux"
 
 # Setup bash configuration
 create_symlink "$DOTFILES_DIR/bashrc" "$HOME/.bashrc" "Bash"
+
+# Setup zsh configuration
+create_symlink "$DOTFILES_DIR/zshrc" "$HOME/.zshrc" "Zsh"
 
 # Setup starship configuration
 mkdir -p "$HOME/.config"
@@ -184,6 +192,7 @@ else
         sudo apt install -y make gcc ripgrep unzip git xclip neovim
         print_success "Neovim and dependencies installed via apt"
     elif command -v brew >/dev/null 2>&1; then
+        # macOS: pbcopy/pbpaste are built-in, no xclip needed
         brew install make gcc ripgrep unzip git neovim
         print_success "Neovim and dependencies installed via brew"
     else
@@ -207,6 +216,7 @@ print_status "Configurations have been linked:"
 echo "  ~/.vimrc -> $DOTFILES_DIR/vimrc"
 echo "  ~/.tmux.conf -> $DOTFILES_DIR/tmux.conf"
 echo "  ~/.bashrc -> $DOTFILES_DIR/bashrc"
+echo "  ~/.zshrc -> $DOTFILES_DIR/zshrc"
 echo "  ~/.config/starship.toml -> $DOTFILES_DIR/starship.toml"
 
 if [ "$(ls -A "$BACKUP_DIR" 2>/dev/null)" ]; then
@@ -219,3 +229,4 @@ fi
 print_status "To apply tmux changes to existing sessions, run: tmux source-file ~/.tmux.conf"
 print_status "Vim changes will take effect when you restart vim or run: :source ~/.vimrc"
 print_status "To apply bash changes, run: source ~/.bashrc or start a new terminal session"
+print_status "To apply zsh changes, run: source ~/.zshrc or start a new terminal session"
