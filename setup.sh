@@ -164,17 +164,17 @@ print_status "Installing starship..."
 if command -v starship >/dev/null 2>&1; then
     print_success "Starship is already installed (version: $(starship --version | cut -d' ' -f2))"
 else
-    if command -v curl >/dev/null 2>&1; then
-        # Install starship using the official installer
-        curl -sS https://starship.rs/install.sh | sh -s -- -y
-        print_success "Starship installed via official installer"
-    elif command -v apt >/dev/null 2>&1; then
-        # Fallback to package manager if curl fails
-        sudo apt update && sudo apt install -y starship
-        print_success "Starship installed via apt"
-    elif command -v brew >/dev/null 2>&1; then
+    if command -v brew >/dev/null 2>&1; then
+        # Prefer brew on macOS to avoid /usr/local/bin issues on Apple Silicon
         brew install starship
         print_success "Starship installed via brew"
+    elif command -v apt >/dev/null 2>&1; then
+        sudo apt update && sudo apt install -y starship
+        print_success "Starship installed via apt"
+    elif command -v curl >/dev/null 2>&1; then
+        # Fallback: use official installer (Linux only — requires writable /usr/local/bin)
+        curl -sS https://starship.rs/install.sh | sh -s -- -y
+        print_success "Starship installed via official installer"
     else
         print_error "Package manager not found. Please install starship manually"
         exit 1
