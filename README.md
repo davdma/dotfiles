@@ -52,6 +52,10 @@ Both `~/.bashrc` (bash) and `~/.zshrc` (zsh) are linked — any existing file is
 
 Afterwards activate plugins for `tmux` with prefix + I and for neovim by starting `nvim`.
 
+NOTE: once plugins activated with TPM using prefix + I (C+space+I), will need to install and activate a nerd font, otherwise there will be missing icons.
+
+macOS NOTE: on macOS the terminal app lacks true color support, so the `tmux-power` plugin will not have color. Suggestion is to use iTerm2.
+
 ## Manual Setup
 
 ```bash
