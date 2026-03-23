@@ -128,6 +128,17 @@ else
     fi
 fi
 
+# Install ncurses-term on apt systems (needed for tmux-256color terminfo on Linux/WSL)
+if command -v apt >/dev/null 2>&1; then
+    if dpkg -s ncurses-term >/dev/null 2>&1; then
+        print_success "ncurses-term is already installed"
+    else
+        print_status "Installing ncurses-term for tmux-256color support..."
+        sudo apt install -y ncurses-term
+        print_success "ncurses-term installed"
+    fi
+fi
+
 # Install TPM (Tmux Plugin Manager)
 print_status "Installing TPM (Tmux Plugin Manager)..."
 TPM_DIR="$HOME/.tmux/plugins/tpm"

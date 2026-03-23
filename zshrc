@@ -1,4 +1,20 @@
 # My zsh config
+# for compatibility with Clash Verge Rev proxy and port 7897
+
+# HTTP proxy for tools that require HTTP (Claude Code, npm etc.)
+export https_proxy=http://127.0.0.1:7897
+export http_proxy=http://127.0.0.1:7897
+
+# SOCKS5 for tools that support it
+export all_proxy=socks5://127.0.0.1:7897
+
+# upper case versions
+export HTTPS_PROXY=http://127.0.0.1:7897
+export HTTP_PROXY=http://127.0.0.1:7897
+export ALL_PROXY=socks5://127.0.0.1:7897
+
+# for claude code
+export PATH="$HOME/.local/bin:$PATH"
 
 # Export
 export TERM="xterm-256color" # Enable 256 color support
