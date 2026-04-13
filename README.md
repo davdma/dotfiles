@@ -68,3 +68,8 @@ curl -sS https://starship.rs/install.sh | sh
 # install fzf
 brew install fzf
 ```
+
+# Useful Utilities
+
+Some list of useful command line utilities to install:
+* [autojump](https://github.com/wting/autojump) lets you do `j project` to jump to most frequented directory
